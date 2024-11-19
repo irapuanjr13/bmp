@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import pandas as pd
 import gdown
+import os
 
 app = Flask(__name__)
 
@@ -31,4 +32,6 @@ def index():
     return render_template("index.html", results=results)
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=5000)
+    
+	port = int(os.getenv("PORT", 5000))  # Lê a variável PORT, ou usa 5000 como padrão
+app.run(debug=True, host="0.0.0.0", port=port)
